@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/MoeFleaRefresh/MoeFleaRefresh.csproj" />
+  <Project Path="tests/MoeFleaRefresh.Tests/MoeFleaRefresh.Tests.csproj" />
+</Solution>
+

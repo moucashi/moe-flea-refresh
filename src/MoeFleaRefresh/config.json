@@ -1,0 +1,18 @@
+{
+  "refreshAfterRaid": false,
+  "refreshWhenFenceRefreshes": false,
+  "scheduledTimes": {
+    "enabled": false,
+    "times": [
+      "08:00",
+      "12:00",
+      "18:00",
+      "00:00"
+    ]
+  },
+  "fixedInterval": {
+    "enabled": false,
+    "minutes": 60
+  }
+}
+

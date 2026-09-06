@@ -23,7 +23,7 @@
 
 ```json
 {
-  "refreshAfterRaid": false,
+  "refreshAfterRaid": true,
   "refreshWhenFenceRefreshes": false,
   "scheduledTimes": {
     "enabled": false,
@@ -48,4 +48,3 @@ dotnet test -c Release
 ```
 
 构建产物位于 `dist/SPT/user/mods/Moe-FleaRefresh/`。
-

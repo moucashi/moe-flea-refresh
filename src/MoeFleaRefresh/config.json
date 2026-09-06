@@ -1,5 +1,5 @@
 {
-  "refreshAfterRaid": false,
+  "refreshAfterRaid": true,
   "refreshWhenFenceRefreshes": false,
   "scheduledTimes": {
     "enabled": false,
@@ -15,4 +15,3 @@
     "minutes": 60
   }
 }
-

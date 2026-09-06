@@ -5,8 +5,8 @@
     <AssemblyName>MoeFleaRefresh</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
     <OutputType>Library</OutputType>
-    <Version>1.1.0</Version>
-    <OutputPath>..\..\dist\SPT\user\mods\Moe-FleaRefresh\</OutputPath>
+    <Version>1.1.1</Version>
+    <OutputPath>..\..\dist\SPT_Runtime\user\mods\Moe-FleaRefresh\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
   </PropertyGroup>

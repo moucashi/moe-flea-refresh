@@ -17,7 +17,7 @@ A refresh removes and regenerates only SPT's `FakePlayer` offers. Real player li
 
 Extract the release archive into the SPT game directory. The server mod should be located at:
 
-`SPT/user/mods/Moe-FleaRefresh/`
+`SPT_Runtime/user/mods/Moe-FleaRefresh/`
 
 ## Configuration
 
@@ -68,4 +68,4 @@ dotnet build -c Release
 dotnet test -c Release
 ```
 
-Build output is written to `dist/SPT/user/mods/Moe-FleaRefresh/`.
+Build output is written to `dist/SPT_Runtime/user/mods/Moe-FleaRefresh/`.

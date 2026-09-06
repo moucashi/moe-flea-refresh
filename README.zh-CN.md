@@ -17,7 +17,7 @@
 
 将发布包内容解压到 SPT 游戏根目录。服务端文件应位于：
 
-`SPT/user/mods/Moe-FleaRefresh/`
+`SPT_Runtime/user/mods/Moe-FleaRefresh/`
 
 ## 配置
 
@@ -68,4 +68,4 @@ dotnet build -c Release
 dotnet test -c Release
 ```
 
-构建产物位于 `dist/SPT/user/mods/Moe-FleaRefresh/`。
+构建产物位于 `dist/SPT_Runtime/user/mods/Moe-FleaRefresh/`。

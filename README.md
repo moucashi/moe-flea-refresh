@@ -1,6 +1,6 @@
 # Moe Flea Refresh
 
-[English](README.md) | [Chinese](README.zh-CN.md)
+[English](README.md) | [简体中文](README.zh-CN.md)
 
 A server-side mod for SPT 4.1.x that proactively regenerates AI flea market offers at configurable times.
 

@@ -1,50 +1,69 @@
 # Moe Flea Refresh
 
-适用于 SPT 4.1.x 的服务端模组，可按配置主动刷新跳蚤市场的 AI 商品报价。
+[English](README.md) | [简体中文](README.zh-CN.md)
 
-## 功能
+A server-side mod for SPT 4.1.x that proactively regenerates AI flea market offers at configurable times.
 
-- 一场战局正常结束后刷新（转移地图 `Transit` 不触发）
-- 黑商（Fence）刷新时同步刷新
-- 每天到达指定的一个或多个本地时间点时刷新
-- 每经过固定时间间隔后刷新
+## Features
 
-刷新时仅替换由 SPT 生成的 `FakePlayer` 报价。玩家挂单与商人报价不会被删除。
+- Refresh after a local raid ends; map-to-map `Transit` does not trigger a refresh
+- Refresh when Fence regenerates his assortment
+- Refresh at one or more configured local times every day
+- Refresh after a configurable fixed interval
 
-## 安装
+A refresh removes and regenerates only SPT's `FakePlayer` offers. Real player listings and trader offers are preserved. Items whose AI offers have sold out can receive newly generated listings after the refresh.
 
-将发布包内容解压到 SPT 游戏根目录。服务端文件应位于：
+## Installation
+
+Extract the release archive into the SPT game directory. The server mod should be located at:
 
 `SPT/user/mods/Moe-FleaRefresh/`
 
-## 配置
+## Configuration
 
-编辑模组目录中的 `config.json`，重启服务端后生效。
+Edit `config.json` in the installed mod directory, then restart the SPT server. The example below uses `jsonc` only to explain each option; keep the actual configuration file as valid JSON without comments.
 
-```json
+```jsonc
 {
+  // Refresh after a completed local raid. Enabled by default.
+  // All raid results except map-to-map Transit are eligible.
   "refreshAfterRaid": true,
+
+  // Refresh whenever Fence regenerates his assortment.
   "refreshWhenFenceRefreshes": false,
+
   "scheduledTimes": {
+    // Enable daily refreshes at the local server times listed below.
     "enabled": false,
+
+    // One or more 24-hour times in strict HH:mm format.
+    // These use the local clock of the machine running the SPT server.
     "times": ["08:00", "12:00", "18:00", "00:00"]
   },
+
   "fixedInterval": {
+    // Enable refreshes at a repeating interval measured from mod startup.
     "enabled": false,
+
+    // Interval length in minutes. Decimal values are supported; must be greater than 0.
     "minutes": 60
   }
 }
 ```
 
-`scheduledTimes.times` 使用服务端所在机器的本地时间，格式必须为 24 小时制 `HH:mm`。固定间隔从服务端加载模组时开始计算，`minutes` 可使用小数且必须大于 0。
+All four triggers can be enabled at the same time. If every trigger is disabled, the mod will not proactively refresh the flea market.
 
-四种触发方式可以同时启用。若全部关闭，模组不会主动刷新市场。
+Every successful refresh writes a server log entry similar to:
 
-## 构建
+```text
+[Moe Flea Refresh] 已刷新跳蚤市场（战局结束），替换 12345 条 AI 报价
+```
+
+## Building
 
 ```powershell
 dotnet build -c Release
 dotnet test -c Release
 ```
 
-构建产物位于 `dist/SPT/user/mods/Moe-FleaRefresh/`。
+Build output is written to `dist/SPT/user/mods/Moe-FleaRefresh/`.

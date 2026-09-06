@@ -19,10 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="config.json">
+    <None Update="config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <TargetPath>config.json</TargetPath>
-    </Content>
+    </None>
   </ItemGroup>
 </Project>
-

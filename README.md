@@ -1,6 +1,6 @@
 # Moe Flea Refresh
 
-[English](README.md) | [简体中文](README.zh-CN.md)
+[English](README.md) | [Chinese](README.zh-CN.md)
 
 A server-side mod for SPT 4.1.x that proactively regenerates AI flea market offers at configurable times.
 
@@ -56,8 +56,10 @@ All four triggers can be enabled at the same time. If every trigger is disabled,
 Every successful refresh writes a server log entry similar to:
 
 ```text
-[Moe Flea Refresh] 已刷新跳蚤市场（战局结束），替换 12345 条 AI 报价
+[Moe Flea Refresh] Flea market refreshed (raid ended); replaced 12345 AI offers
 ```
+
+Runtime messages automatically follow the SPT server locale. Chinese SPT locales use Simplified Chinese; all other locales use English.
 
 ## Building
 

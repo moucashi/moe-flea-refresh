@@ -10,6 +10,6 @@ public sealed class ModMetadataTests
         var metadata = new ModMetadata();
 
         Assert.Equal("moe.flea.refresh", metadata.ModGuid);
-        Assert.Equal("1.0.3", metadata.Version.ToString());
+        Assert.Equal("1.1.0", metadata.Version.ToString());
     }
 }

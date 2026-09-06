@@ -1,6 +1,7 @@
 using MoeFleaRefresh.Configuration;
 using MoeFleaRefresh.Patches;
 using MoeFleaRefresh.Services;
+using MoeFleaRefresh.Localization;
 using SPTarkov.Common.Models.Logging;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.DI;
@@ -11,7 +12,8 @@ namespace MoeFleaRefresh;
 public sealed class MoeFleaRefreshMod(
     ISptLogger<MoeFleaRefreshMod> logger,
     FleaRefreshConfigService configService,
-    FleaRefreshService refreshService) : IOnLoad, IOnUpdate
+    FleaRefreshService refreshService,
+    FleaRefreshLocalizer localizer) : IOnLoad, IOnUpdate
 {
     private DailySchedule dailySchedule = new([]);
     private DateTime nextIntervalRefreshUtc = DateTime.MaxValue;
@@ -26,7 +28,7 @@ public sealed class MoeFleaRefreshMod(
         new EndLocalRaidPatch(refreshService).Enable();
         new FenceRefreshPatch(refreshService).Enable();
         refreshService.IsReady = true;
-        logger.Success("[Moe Flea Refresh] 模组已加载");
+        logger.Success(localizer.Text(FleaRefreshText.ModLoaded));
         return Task.CompletedTask;
     }
 
@@ -38,12 +40,12 @@ public sealed class MoeFleaRefreshMod(
 
         if (config.ScheduledTimes.Enabled && dailySchedule.ShouldTrigger(DateTime.Now))
         {
-            refreshService.Refresh("指定时间点");
+            refreshService.Refresh(FleaRefreshText.ReasonScheduledTime);
         }
 
         if (config.FixedInterval.Enabled && nowUtc >= nextIntervalRefreshUtc)
         {
-            refreshService.Refresh("固定时间间隔");
+            refreshService.Refresh(FleaRefreshText.ReasonFixedInterval);
             ResetInterval(nowUtc);
         }
 
@@ -57,4 +59,3 @@ public sealed class MoeFleaRefreshMod(
             : DateTime.MaxValue;
     }
 }
-

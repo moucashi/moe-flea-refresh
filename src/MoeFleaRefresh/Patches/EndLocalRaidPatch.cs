@@ -1,5 +1,6 @@
 using System.Reflection;
 using MoeFleaRefresh.Services;
+using MoeFleaRefresh.Localization;
 using SPTarkov.Reflection.Patching;
 using SPTarkov.Server.Core.Controllers;
 using SPTarkov.Server.Core.Models.Eft.Match;
@@ -33,7 +34,6 @@ public sealed class EndLocalRaidPatch : AbstractPatch
     private static async Task RefreshAfterSuccessfulRaidEnd(Task original)
     {
         await original.ConfigureAwait(false);
-        service.Refresh("战局结束");
+        service.Refresh(FleaRefreshText.ReasonRaidEnded);
     }
 }
-

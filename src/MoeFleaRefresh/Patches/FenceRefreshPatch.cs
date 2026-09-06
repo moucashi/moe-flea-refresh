@@ -1,5 +1,6 @@
 using System.Reflection;
 using MoeFleaRefresh.Services;
+using MoeFleaRefresh.Localization;
 using SPTarkov.Reflection.Patching;
 using SPTarkov.Server.Core.Services.Commerce;
 
@@ -22,8 +23,7 @@ public sealed class FenceRefreshPatch : AbstractPatch
     {
         if (service.RefreshWhenFenceRefreshesEnabled)
         {
-            service.Refresh("黑商刷新");
+            service.Refresh(FleaRefreshText.ReasonFenceRefreshed);
         }
     }
 }
-
